@@ -110,7 +110,7 @@
   @media print {
     body { font-size: 12pt; }
     main { max-width: none; padding: 0; }
-    nav.toc, .bar, .exp, .sec-score { display: none !important; }
+    nav.toc, .bar, .exp, .sec-score, .who, .sendmsg { display: none !important; }
     .printonly { display: block; }
     button.opt { border: 0; padding: 0; }
     h2.newpage { page-break-before: always; }
@@ -119,26 +119,229 @@
     .tablewrap { overflow: visible; }
     details.answers { border: none; padding: 0; }
   }
+  .who { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 12px 0 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: .92rem; }
+  .who label { display: inline-flex; align-items: center; gap: 6px; }
+  .who input { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; width: 7em; }
+  .who input.narrow { width: 4.5em; }
+  .sendmsg { flex: 1 0 100%; font-size: .85rem; color: var(--muted); }
+  .sendmsg:empty { display: none; }
+  .lt h4 { margin: 12px 0 2px; color: var(--accent); font-size: 1rem; }
+  .lt p { margin: 2px 0; }
+  .lt .orig { font-size: 1.12rem; line-height: 1.9; }
+  .lt .notes { font-size: .92rem; color: var(--muted); }
 
-  .poem { text-align: center; margin: 8px 0 12px; font-size: 1.15rem; line-height: 1.9; }
-  .poem p { margin: 0; }
-  .poem .hl { font-size: 1.5rem; }
+  .banner { background: linear-gradient(135deg, #ff922b, #f06595); color: #fff; border-radius: 14px; padding: 16px 18px 14px; margin: 10px 0 6px; text-align: center; }
+  .banner h1 { color: #fff; margin: 0 0 2px; }
+  .banner .subtitle { color: #fff; margin: 0 0 6px; }
+  .banner .lessons-line, .banner .legend { color: #fff; opacity: .92; }
+  .banner .legend a { color: #fff; text-decoration: underline; }
+  .lesson-block {
+    --c: #e8590c;
+    border-left: 6px solid var(--c); border-radius: 10px;
+    padding: 2px 16px 14px; margin: 24px 0 18px;
+    background: color-mix(in srgb, var(--c) 7%, var(--bg));
+  }
+  .lesson-block h3.lesson {
+    background: var(--c); color: #fff; margin: 10px -16px 10px; padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+  }
+  .lesson-block h3.lesson small { color: #fff; opacity: .88; }
+  .lesson-block .lt h4 { color: var(--c); }
+  .lesson-block .lt .notes { background: color-mix(in srgb, var(--c) 6%, var(--bg)); padding: 4px 8px; border-radius: 6px; }
+  .lesson-block .q { break-inside: avoid; }
+  .zi-block {
+    --c: #e67700;
+    border-left: 6px solid var(--c); border-radius: 10px;
+    padding: 2px 16px 16px; margin: 24px 0; background: color-mix(in srgb, var(--c) 6%, var(--bg));
+  }
+  .zi-block h2 { color: var(--c); border-bottom-color: var(--c); }
+  .zi-block h3 { color: var(--c); }
+  .zi-block table.meaning thead th { background: color-mix(in srgb, var(--c) 20%, var(--bg)); }
+  @media print {
+    .banner { background: none !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .banner h1, .banner .subtitle, .banner .lessons-line, .banner .legend { color: #000 !important; }
+    .lesson-block, .zi-block { background: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lesson-block h3.lesson { background: none !important; color: var(--c) !important; border-bottom: 2px solid var(--c); }
+  }
+
+  table.idiom tbody tr.grp th { background: color-mix(in srgb, #f08c00 16%, var(--bg)); color: #b35c00; text-align: left; font-size: .92rem; padding-top: 8px; padding-bottom: 8px; }
+  table.idiom tbody th[scope="row"] { width: 10.5em; background: var(--row); text-align: center; white-space: normal; }
+
+  .idiom-list { margin-top: 6px; }
+  .idiom-group { color: #b35c00; background: color-mix(in srgb, #f08c00 16%, var(--bg)); padding: 6px 12px; border-radius: 6px; margin: 18px 0 8px; font-size: 1rem; }
+  .idiom-card { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-left: 4px solid #f08c00; border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+  .idiom-no { flex: 0 0 auto; width: 1.6em; height: 1.6em; line-height: 1.6em; text-align: center; border-radius: 50%; background: #f08c00; color: #fff; font-size: .82rem; font-weight: bold; font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif; }
+  .idiom-term { font-weight: bold; font-size: 1.1rem; color: #b35c00; margin-bottom: 4px; }
+  .idiom-def { font-size: .97rem; line-height: 1.75; }
+
+  .dl-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .dl-card { display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; text-decoration: none; color: var(--fg); }
+  .dl-card:hover { background: var(--row); }
+  .dl-icon { font-size: 1.6rem; }
+  .dl-text { display: flex; flex-direction: column; }
+  .dl-title { font-weight: bold; }
+  .dl-sub { font-size: .82rem; color: var(--muted); }
 </style>
 </head>
 <body>
 <main>
+<div class="banner">
 <h1>古文今讀 第 31–35 課</h1>
 <p class="subtitle">虛字整理：顧、比、之、以、於、乃、唯、莫、去、嘗、予余吾、愚某僕、汝爾子若君卿</p>
 <p class="lessons-line">第31課 掩耳盜鐘　第32課 野人獻曝　第33課 管寧割席　第34課 多言何益　第35課 伯樂一顧</p>
-<p class="legend">出處：課本標註＝課本注釋與老師註記、補充投影片；原文＝課文內容；補充＝整理時另加的用法</p>
-<p class="legend">互動版（可直接點選作答）｜<a href="static.html">前往講義版（可列印）</a>　｜　<a href="古文今讀31-35.docx">下載 Word 檔</a></p>
+<p class="legend">出處：課本標註＝課本旁註所列；原文＝課文內容；補充＝整理時另加的用法</p>
+<p class="legend">互動版（可直接點選作答）｜<a href="static.html">前往講義版（可列印）</a></p>
+</div>
 <nav class="toc" aria-label="目錄">
-<a href="#handout">虛字整理</a><a href="#idioms">成語整理</a><a href="#notes">各課重點</a><a href="#practice">虛字練習</a><a href="#lessonqs">課文選擇題</a><a href="#answers">參考答案</a>
+<a href="#lesson-31">第31課</a><a href="#lesson-32">第32課</a><a href="#lesson-33">第33課</a><a href="#lesson-34">第34課</a><a href="#lesson-35">第35課</a><a href="#idioms">成語</a><a href="#handout">虛字整理</a><a href="#practice">虛字練習</a><a href="#answers">參考答案</a><a href="#downloads">下載 Word</a>
 </nav>
-<div class="bar" id="bar" role="region" aria-label="作答控制"><div class="modes" role="group" aria-label="作答模式"><button type="button" id="m-practice" class="seg on" aria-pressed="true">即時對答案</button><button type="button" id="m-test" class="seg" aria-pressed="false">交卷模式</button></div><div class="stats" id="stats" aria-live="polite">已作答 0／40</div><div class="acts"><button type="button" id="submit" class="act" hidden>交卷</button><button type="button" id="reset" class="act">重新作答</button></div></div>
+<div class="who" id="who" role="group" aria-label="學生資料">
+    <label>班級 <input id="f-cls" maxlength="8" placeholder="例：711" autocomplete="off"></label>
+    <label>座號 <input id="f-seat" class="narrow" maxlength="2" inputmode="numeric" placeholder="例：5" autocomplete="off"></label>
+    <label>姓名 <input id="f-name" maxlength="10" autocomplete="off"></label>
+  </div>
+<div class="bar" id="bar" role="region" aria-label="作答控制">
+    <div class="modes" role="group" aria-label="作答模式">
+      <button type="button" id="m-practice" class="seg on" aria-pressed="true">即時對答案</button>
+      <button type="button" id="m-test" class="seg" aria-pressed="false">交卷模式</button>
+    </div>
+    <div class="stats" id="stats" aria-live="polite">已作答 0／0　答對 0</div>
+    <div class="sendmsg" id="send-msg" aria-live="polite"></div>
+    <div class="acts">
+      <button type="button" id="submit" class="act">交卷送出</button>
+      <button type="button" id="reset" class="act">重新作答</button>
+    </div>
+  </div>
+<section id="lessonqs">
+<h2 class="newpage">古文今讀 31–35 課　課文與選擇題</h2>
+<p class="infoline printonly">班級：＿＿＿＿　座號：＿＿＿＿　姓名：＿＿＿＿＿＿　　得分：＿＿＿＿</p>
+<p class="rule">每課 4 題，每題 5 分，共 100 分。直接點選答案作答。</p>
+<div class="lesson-block" style="--c:#e8590c">
+<h3 class="lesson" id="lesson-31">第31課　掩耳盜鐘<small>　《呂氏春秋》</small></h3>
+<div class="lt"><h4>📜 原文</h4><p class="orig">有得鐘者，欲負而走，則鐘大不可負；以椎毀之，鐘況然有音。恐人聞之而奪己也，遽掩其耳。惡人聞之，可也；惡己自聞之，悖矣。</p>
+<h4>📖 注釋</h4><p class="notes">①鐘：古代一種中空、用銅或鐵製成之打擊樂器　②負：背負、以背馱物　③椎：敲打東西的器具　④毀：破壞　⑤況然：敲鐘時所發出「況」的聲響；況，狀聲詞　⑥奪：強取、搶奪　⑦遽：急忙　⑧掩：遮蓋　⑨惡：害怕、畏懼　⑩悖：違背情理</p>
+<h4>🗣 語譯</h4><p>有個得到一口鐘的人，想把鐘背在背上逃走，可是鐘太大了，背不動；他就用椎子把鐘敲碎，鐘「況」的一聲發出很大的聲響。他害怕別人聽到鐘聲會來把鐘搶走，就急忙摀住自己的耳朵。害怕別人聽到鐘聲，還說得過去；害怕自己聽到，（以為摀住自己的耳朵，別人也就聽不到了，）那就太違背情理了。</p>
+<h4>📚 成語教室</h4><p>怕別人聽到鐘聲，還算可以理解；但以為摀住自己的耳朵，別人就聽不到，就違背情理了。 成語「掩耳盜鐘」：比喻自己欺騙自己，明明無法隱瞞卻還想掩蓋事實。相關俗語：偷雞不著蝕把米（本想占便宜，反而吃虧）、偷來的鑼鼓敲不得（做賊心虛，事情不能張揚）、閉著眼睛捉麻雀（自己騙自己，或不清楚狀況就行動）。</p>
+<h4>📝 隨堂練習</h4></div>
+<ol class="qs">
+<li class="q" data-a="A" data-pts="5" data-sec="l31"><div class="stem">得鐘者一開始為什麼無法直接把鐘背走？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 鐘太大，無法背負<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 鐘太貴重，不敢碰<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 有人守在旁邊<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 天色太暗看不清<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">文中「鐘大不可負」，鐘太大所以背不走。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l31"><div class="stem">得鐘者打算用椎子把鐘敲毀，最可能的目的是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 想聽鐘聲<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 把鐘敲碎，方便分批帶走<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 發洩心中怒氣<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 測試鐘的品質<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">鐘太大無法背走，所以想敲碎後再帶走。</span></div></li>
+<li class="q" data-a="C" data-pts="5" data-sec="l31"><div class="stem">得鐘者為什麼「遽掩其耳」？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 討厭嘈雜的聲音<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 耳朵受傷了<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 怕別人聽到鐘聲來搶奪<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 想聽外面的動靜<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「恐人聞之而奪己也」，他害怕別人聽到鐘聲，就會來搶鐘。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l31"><div class="stem">本文所批評的，是哪一種人？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 貪心不足的人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 自己欺騙自己，以為別人也不知道的人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 做事不夠謹慎的人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 不肯認錯的人<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">怕別人聽到還算合理，但摀住自己的耳朵就以為別人聽不到，是自欺欺人，「悖矣」。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="l31"></p>
+</div>
+<div class="lesson-block" style="--c:#2f9e44">
+<h3 class="lesson" id="lesson-32">第32課　野人獻曝<small>　《列子》</small></h3>
+<div class="lt"><h4>📜 原文</h4><p class="orig">昔宋國有田夫，常衣縕黂，僅以過冬。暨春東作，自曝於日，不知天下之有廣廈隩室，綿纊狐貉。顧謂其妻曰：「負日之暄，人莫知者；以獻吾君，將有重賞。」里之富室告之曰：「昔人有美戎菽、甘枲莖、芹萍子者，對鄉豪稱之。鄉豪取而嘗之，蜇於口，慘於腹，眾哂而怨之，其人大慙。子，此類也。」</p>
+<h4>📖 注釋</h4><p class="notes">①衣：穿（名詞轉為動詞）　②縕黂：亂麻　③暨：至、及　④東作：春耕　⑤曝：在陽光底下晒　⑥廣廈：寬廣高大的房屋　⑦隩：溫暖　⑧綿纊狐貉：用細絲綿和狐、貉皮毛作成的裘衣　⑨顧：回首、回頭看　⑩暄：溫暖　⑪菽：豆類　⑫蜇：毒蟲叮咬　⑬哂：嘲笑</p>
+<h4>🗣 語譯</h4><p>從前宋國有個農夫，平時只穿著亂麻做成的粗衣，勉強度過寒冬。到了春天開始耕作時，他在太陽底下曬太陽，覺得十分溫暖；他不知道天下還有寬敞高大的房屋、溫暖的內室，以及用絲綿和狐皮、貉皮做成的衣裘。他回頭對妻子說：「背對著太陽取暖的這種溫暖，沒有人知道；把它獻給我們的國君，一定會得到重賞。」村裡的一個富人告訴他說：「從前有個人，認為胡豆、麻莖、水芹、萍子很好吃，就在鄉里的豪紳面前稱讚它們。豪紳拿來品嘗，結果嘴巴像被毒蟲叮咬般刺痛，肚子也非常難受，大家都嘲笑並埋怨那個人，那個人感到十分慚愧。你啊，就是這一類的人。」</p>
+<h4>📚 成語教室</h4><p>富人說了昔人獻野菜的故事，暗指農夫也是自以為是好東西，其實別人未必稀罕。 成語「野人獻曝」：後比喻平凡人所貢獻的平凡事物，亦用為人對所獻東西或意見的自謙之詞。相近的成語有「井底之蛙」（見識淺陋）；「老馬識途」則是稱經歷豐富練達的人，「孤芳自賞」則指自命清高、自我欣賞，兩者意思不同。</p>
+<h4>📝 隨堂練習</h4></div>
+<ol class="qs">
+<li class="q" data-a="B" data-pts="5" data-sec="l32"><div class="stem">宋國田夫認為「人莫知」的好東西是什麼？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 皮裘大衣<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 曬太陽取暖的溫暖<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 自己種的野菜<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 廣廈隩室<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「負日之暄，人莫知者」，他以為曬太陽的溫暖是別人不知道的。</span></div></li>
+<li class="q" data-a="A" data-pts="5" data-sec="l32"><div class="stem">田夫為什麼想把曬太陽的方法獻給國君？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 他不知道天下還有廣廈、綿纊等更好的取暖方式，才以為是難得的好方法<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 他想藉此諷刺國君<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 他想跟富人比較誰更聰明<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 國君要求百姓進獻<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">文中說他「不知天下之有廣廈隩室，綿纊狐貉」，見識淺陋，因此自以為獻曝可得重賞。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l32"><div class="stem">富室講述「昔人」獻野菜的故事，主要用意是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 稱讚昔人的品味<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 告訴田夫他的想法就像昔人一樣，自己覺得珍貴，別人未必稀罕<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 教田夫怎麼種野菜<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 勸田夫改獻野菜給國君<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">昔人以粗菜為美味，鄉豪嘗了卻難受，被嘲笑；富室藉此說田夫「此類也」。</span></div></li>
+<li class="q" data-a="C" data-pts="5" data-sec="l32"><div class="stem">「子，此類也」的「子」，指的是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 昔人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 鄉豪<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 宋國田夫<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 富室<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">子＝汝＝你，富室對田夫說話，指宋國田夫。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="l32"></p>
+</div>
+<div class="lesson-block" style="--c:#1c7ed6">
+<h3 class="lesson" id="lesson-33">第33課　管寧割席<small>　《世說新語》</small></h3>
+<div class="lt"><h4>📜 原文</h4><p class="orig">管寧、華歆共園中鋤菜，見地有片金；管揮鋤與瓦石不異，華捉而擲去之。又嘗同席讀書，有乘軒冕過門者，寧讀如故，歆廢書出看。寧割席分坐，曰：「子非吾友也。」</p>
+<h4>📖 注釋</h4><p class="notes">①管寧：字幼安，三國魏朱虛人　②華歆：字子魚，魏高唐人，魏明帝時任太尉　③捉：拿　④擲：拋投　⑤嘗：曾經　⑥席：坐席　⑦軒冕：古代貴族官員所坐的軒車和所戴的禮帽，借指官位爵祿或顯貴的人　⑧廢書：放下書本</p>
+<h4>🗣 語譯</h4><p>管寧和華歆一起在菜園裡鋤草種菜，看見地上有一小片金子；管寧照樣揮動鋤頭，把金子看得和瓦片、石頭沒有兩樣，華歆卻把金子撿起來看了看，才把它丟掉。又有一次，兩人同坐在一張席子上讀書，有位乘坐華貴車子、戴著禮帽的顯貴人物從門前經過，管寧依舊照常讀書，華歆卻放下書本跑出去觀看。管寧便把席子割開，和華歆分開來坐，說：「你不是我的朋友了。」</p>
+<h4>📚 成語教室</h4><p>成語「割席分坐」（割席）：比喻朋友絕交。文中兩件事分別顯示兩人對財富、官位的態度不同，志趣不合，因而絕交。</p>
+<h4>📝 隨堂練習</h4></div>
+<ol class="qs">
+<li class="q" data-a="B" data-pts="5" data-sec="l33"><div class="stem">管寧見到地上的黃金，有什麼反應？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 撿起來看了看<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 繼續揮鋤，把黃金視同瓦石<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 立刻據為己有<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 交給官府<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">文中「管揮鋤與瓦石不異」，管寧把黃金看得和瓦石一樣。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l33"><div class="stem">華歆「廢書出看」乘軒冕過門者，顯示他是怎樣的人？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 專心向學<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 對榮華富貴仍心生嚮往<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 心地善良<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 喜歡熱鬧、愛看名人<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">看到達官貴人經過就放下書出去看，可見他心慕榮利，與管寧不同。</span></div></li>
+<li class="q" data-a="A" data-pts="5" data-sec="l33"><div class="stem">「有乘軒冕過門者」的「軒冕」，運用了哪一種修辭？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 借代<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 譬喻<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 誇飾<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 排比<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">以軒車和冕禮帽借代官位爵祿或顯貴的人，屬於借代。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l33"><div class="stem">管寧說「子非吾友也」，主要是因為？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 華歆偷了他的金子<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 兩人志趣、價值觀不合<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 華歆吵到他讀書<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 兩人為金子吵架<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">兩件事顯示管寧淡泊名利，華歆心慕榮利，志趣不合，因此割席絕交。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="l33"></p>
+</div>
+<div class="lesson-block" style="--c:#ae3ec9">
+<h3 class="lesson" id="lesson-34">第34課　多言何益<small>　《墨子》</small></h3>
+<div class="lt"><h4>📜 原文</h4><p class="orig">子禽問曰：「多言有益乎？」墨子曰：「蝦蟆、蛙、蠅，日夜恆鳴，口乾舌敝，然而不聽。今觀晨雞，時夜而鳴，天下振動。多言何益？唯其言之時也。」</p>
+<h4>📖 注釋</h4><p class="notes">①子禽：墨子的學生　②益：好處　③恆：經常　④敝：通「疲」，疲倦　⑤晨雞：報曉的公雞　⑥時夜：司晨報曉　⑦時：適當的時機　⑧蝦蟆：ㄏㄚˊ ˙ㄇㄚ，蛤蟆</p>
+<h4>🗣 語譯</h4><p>子禽問墨子說：「話說得多，有好處嗎？」墨子說：「蝦蟆、青蛙和蒼蠅，白天晚上不停地鳴叫，叫得口乾舌燥、疲憊不堪，可是沒有人去聽牠們。再看那報曉的公雞，在天快亮時按時啼叫，天下的人都被牠喚醒而振作起來。話說得多，又有什麼好處呢？重要的是要在適當的時機說話啊！」</p>
+<h4>📚 成語教室</h4><p>本文用「三種動物」和「晨雞」形成對比（映襯），說明話說得多不見得有益，重點在於說得是不是時候。 相關諺語：日出萬言，必有一傷（話說多了容易出錯）；一言既出，駟馬難追（話一旦說出口就很難收回，須謹慎）；良藥苦口利於病，忠言逆耳利於行；逢人且說三分話，未可全拋一片心（對別人說話要有所保留）。</p>
+<h4>📝 隨堂練習</h4></div>
+<ol class="qs">
+<li class="q" data-a="A" data-pts="5" data-sec="l34"><div class="stem">子禽向墨子請教的問題是什麼？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 多言有沒有好處<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 如何養雞<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 怎麼學習才有效<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 如何與人辯論<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「多言有益乎？」就是子禽的問題。</span></div></li>
+<li class="q" data-a="A" data-pts="5" data-sec="l34"><div class="stem">墨子舉蝦蟆、蛙、蠅為例，想說明什麼？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 牠們日夜鳴叫，口乾舌疲，卻沒人理會，說明多言無益<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 牠們的叫聲很好聽<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 牠們生性喜歡吵鬧<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 牠們比晨雞勤勞<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「日夜恆鳴，口乾舌敝，然而不聽」，說明話多卻無人理會。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l34"><div class="stem">晨雞為什麼能讓「天下振動」？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 叫聲特別大<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 牠在適當的時機（黎明）啼叫<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 牠叫得比蛙更久<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 牠的數量特別多<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">文末「唯其言之時也」，關鍵在於適當的時機。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l34"><div class="stem">本文最主要的意思是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 話說得愈多，愈能說服別人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 說話貴在切合時機，不在多寡<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 說話應該輕聲細語<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 說話要看對象<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「多言何益？唯其言之時也」，重點是說話要切合時機。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="l34"></p>
+</div>
+<div class="lesson-block" style="--c:#d6336c">
+<h3 class="lesson" id="lesson-35">第35課　伯樂一顧<small>　《戰國策》</small></h3>
+<div class="lt"><h4>📜 原文</h4><p class="orig">人有賣駿馬者，比三旦立市，人莫之知。往見伯樂曰：「臣有駿馬，欲賣之，比三旦立於市，人莫與言。願子還而視之，去而顧之，臣請獻一朝之賈。」伯樂乃還而視之，去而顧之，一旦而馬價十倍。</p>
+<h4>📖 注釋</h4><p class="notes">①駿馬：好馬、良馬　②比：連續、接連（ㄅㄧˋ）　③三旦：三天　④莫：沒有（人）　⑤伯樂：善於相馬的人　⑥還：通「旋」，旋轉、繞圈子　⑦去：離開　⑧顧：回頭看　⑨賈：通「價」，指報酬　⑩乃：於是</p>
+<h4>🗣 語譯</h4><p>有個賣駿馬的人，接連三天站在市場上賣馬，卻沒有人知道他的馬是好馬。他去拜見伯樂，說：「我有一匹駿馬，想要把牠賣掉，接連三天站在市場上，卻沒有人來跟我談買馬的事。希望您繞著我的馬看一看，離開時再回頭看牠一眼，我願意奉上一天的收入作為酬謝。」伯樂於是繞著馬看了看，離開時又回頭看了一眼，結果一天之內，這匹馬的價錢就漲了十倍。</p>
+<h4>📚 成語教室</h4><p>馬的價值並沒有改變，改變的是相馬名家伯樂的青睞，說明人們常因權威的肯定而重視事物；成語「伯樂一顧」比喻才能受人賞識、肯定。 相關諺語：好馬不吃回頭草（有志氣的人不走回頭路）；路遙知馬力，日久見人心（時間能考驗出人心的真假）。</p>
+<h4>📝 隨堂練習</h4></div>
+<ol class="qs">
+<li class="q" data-a="B" data-pts="5" data-sec="l35"><div class="stem">賣馬人為什麼去見伯樂？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 想請伯樂買下自己的馬<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 馬連續三天在市場都賣不出去，希望借伯樂的名氣<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 想向伯樂學習相馬<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 想與伯樂比賽相馬<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">「比三旦立於市，人莫與言」，馬賣不出去，才請伯樂來看。</span></div></li>
+<li class="q" data-a="A" data-pts="5" data-sec="l35"><div class="stem">「伯樂乃還而視之，去而顧之」，表現出伯樂怎樣的態度？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 依依不捨，十分欣賞<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 冷漠不在意<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 猶豫不決<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 憤怒不滿<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">伯樂繞著馬看了又看，離開時還回頭再看，表現出欣賞與不捨。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="l35"><div class="stem">「一旦而馬價十倍」的主要原因是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 馬突然變得更加健壯<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 相馬名家伯樂的青睞，使人們認同這匹馬的價值<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 賣馬人降價促銷<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 市場上缺馬<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">馬本身沒有改變，是伯樂的名氣讓大家改觀。</span></div></li>
+<li class="q" data-a="A" data-pts="5" data-sec="l35"><div class="stem">「人莫之知」是哪一種句型？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 否定句中賓語前置的倒裝句，還原為「人莫知之」<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 疑問句<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 感嘆句<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 判斷句<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">否定句中，代詞賓語「之」提到動詞前，語序還原為「人莫知之」。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="l35"></p>
+</div>
+</section>
+<section id="idioms">
+<div class="zi-block" style="--c:#F08C00">
+<h2>成語精選</h2>
+<div class="idiom-list">
+<h4 class="idiom-group">第31課　掩耳盜鐘</h4>
+<div class="idiom-card"><span class="idiom-no">1</span><div class="idiom-body"><div class="idiom-term">掩耳盜鐘</div><div class="idiom-def">比喻自己欺騙自己，明明無法隱瞞卻還想掩蓋事實。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">2</span><div class="idiom-body"><div class="idiom-term">偷雞不著蝕把米</div><div class="idiom-def">本想占便宜，反而吃虧。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">3</span><div class="idiom-body"><div class="idiom-term">偷來的鑼鼓敲不得</div><div class="idiom-def">做賊心虛，事情不能張揚。</div></div></div>
+<h4 class="idiom-group">第32課　野人獻曝</h4>
+<div class="idiom-card"><span class="idiom-no">4</span><div class="idiom-body"><div class="idiom-term">野人獻曝</div><div class="idiom-def">比喻平凡人所貢獻的平凡事物；亦用為人對所獻東西或意見的自謙之詞。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">5</span><div class="idiom-body"><div class="idiom-term">井底之蛙</div><div class="idiom-def">比喻見識淺陋的人（可用來形容本文的田夫）。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">6</span><div class="idiom-body"><div class="idiom-term">老馬識途</div><div class="idiom-def">後稱經歷豐富練達的人。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">7</span><div class="idiom-body"><div class="idiom-term">孤芳自賞</div><div class="idiom-def">比喻自命清高，自我欣賞。</div></div></div>
+<h4 class="idiom-group">第33課　管寧割席</h4>
+<div class="idiom-card"><span class="idiom-no">8</span><div class="idiom-body"><div class="idiom-term">割席分坐（割席）</div><div class="idiom-def">比喻朋友絕交。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">9</span><div class="idiom-body"><div class="idiom-term">尸位素餐</div><div class="idiom-def">占著職位享受俸祿而不做事。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">10</span><div class="idiom-body"><div class="idiom-term">剛愎自用</div><div class="idiom-def">性情倔強，固執己見。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">11</span><div class="idiom-body"><div class="idiom-term">好逸惡勞</div><div class="idiom-def">貪圖安逸，憎惡勞動。</div></div></div>
+<h4 class="idiom-group">第34課　多言何益</h4>
+<div class="idiom-card"><span class="idiom-no">12</span><div class="idiom-body"><div class="idiom-term">日出萬言，必有一傷</div><div class="idiom-def">話說多了容易出錯。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">13</span><div class="idiom-body"><div class="idiom-term">一言既出，駟馬難追</div><div class="idiom-def">話一旦說出口就很難收回，說話須謹慎。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">14</span><div class="idiom-body"><div class="idiom-term">逢人且說三分話，未可全拋一片心</div><div class="idiom-def">對別人說話要有所保留。</div></div></div>
+<h4 class="idiom-group">第35課　伯樂一顧</h4>
+<div class="idiom-card"><span class="idiom-no">15</span><div class="idiom-body"><div class="idiom-term">伯樂一顧</div><div class="idiom-def">比喻才能受人賞識、肯定。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">16</span><div class="idiom-body"><div class="idiom-term">路遙知馬力，日久見人心</div><div class="idiom-def">時間能考驗出人心的真假。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">17</span><div class="idiom-body"><div class="idiom-term">好馬不吃回頭草</div><div class="idiom-def">有志氣的人不走回頭路。</div></div></div>
+<h4 class="idiom-group">「顧」「比」相關成語</h4>
+<div class="idiom-card"><span class="idiom-no">18</span><div class="idiom-body"><div class="idiom-term">三顧茅廬</div><div class="idiom-def">漢末劉備往訪諸葛亮，共三次才得見；後比喻敬賢之禮或誠心邀請。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">19</span><div class="idiom-body"><div class="idiom-term">顧此失彼</div><div class="idiom-def">注意這個卻忽略了那個，指不能全面兼顧。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">20</span><div class="idiom-body"><div class="idiom-term">奮不顧身</div><div class="idiom-def">勇往直前，不顧生死。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">21</span><div class="idiom-body"><div class="idiom-term">後顧之憂</div><div class="idiom-def">指後方的憂慮或事後可能發生的麻煩。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">22</span><div class="idiom-body"><div class="idiom-term">櫛次鱗比</div><div class="idiom-def">形容排列密集而整齊。</div></div></div>
+<div class="idiom-card"><span class="idiom-no">23</span><div class="idiom-body"><div class="idiom-term">朋比為奸</div><div class="idiom-def">結黨營私，做壞事。</div></div></div>
+</div>
+</div>
+<h3>成語練習</h3>
+<p class="note">以下題目不計入分數。</p>
+<ol class="qs">
+<li class="q" data-a="B" data-pts="0" data-sec="id"><div class="stem">成語「掩耳盜鐘」比喻什麼？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 做了壞事就心虛害怕<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 自己欺騙自己，以為別人也不知道<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 做事不擇手段<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 與人團結合作<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">偷鐘者摀住自己的耳朵，就以為別人也聽不到，比喻自欺欺人。</span></div></li>
+<li class="q" data-a="B" data-pts="0" data-sec="id"><div class="stem">提出建議時，有人說「野人獻曝，還請多多指教」，這句話的用意是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 炫耀自己的才華<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 自謙，表示自己的意見平凡淺薄<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 批評別人不夠專業<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 抗議別人不聽勸告<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">野人獻曝：亦用為人對所獻東西或意見的自謙之詞。</span></div></li>
+<li class="q" data-a="A" data-pts="0" data-sec="id"><div class="stem">「割席分坐」（割席）在後世用來比喻？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 朋友絕交<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 平分財物<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 分工合作<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 共同讀書<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">管寧因與華歆志趣不合，割席分坐，後比喻朋友絕交。</span></div></li>
+<li class="q" data-a="A" data-pts="0" data-sec="id"><div class="stem">〈多言何益〉以蝦蟆、蛙、蠅與晨雞相互對照，使用的是哪一種修辭？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 映襯（對比）<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 誇飾<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 摹寫<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 借代<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">把日夜鳴叫卻無人理會的三種動物，與適時啼叫的晨雞對比，屬於映襯（對比）。</span></div></li>
+<li class="q" data-a="A" data-pts="0" data-sec="id"><div class="stem">成語「伯樂一顧」比喻什麼？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 才能受人賞識、肯定<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 做事拖延不決<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 花錢精打細算<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 回頭是岸<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">伯樂一顧：比喻才能受人賞識、肯定。</span></div></li>
+</ol>
+<p class="sec-score" data-sec="id"></p>
+</section>
 <section id="handout">
-<h2>一、顧（ㄍㄨˋ，多義字，第32、35課為主）</h2>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
+<div class="zi-block" style="--c:#e67700">
+<h2 id="h-1">一、顧（ㄍㄨˋ，多義字，第32、35課為主）</h2>
+<div class="tablewrap"><table class="meaning"><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
 <tr><th scope="row">看、張望（動詞）</th><td><div class="ex">相「<span class="hl">顧</span>」一笑、環「<span class="hl">顧</span>」、左「<span class="hl">顧</span>」右盼<span class="src">（補充投影片）</span></div><div class="ex">「<span class="hl">顧</span>」乞其餘，不足，又「<span class="hl">顧</span>」而之他<span class="src">（補充投影片）</span></div></td></tr>
 <tr><th scope="row">回首、回頭看（動詞）</th><td><div class="ex">「<span class="hl">顧</span>」謂其妻曰<span class="src">（第32課，注釋⑨）</span></div><div class="ex">去而「<span class="hl">顧</span>」之<span class="src">（第35課，注釋⑧）</span></div><div class="ex">伯樂一「<span class="hl">顧</span>」（比喻才能受人賞識、肯定）、後「<span class="hl">顧</span>」之憂<span class="src">（補充投影片）</span></div></td></tr>
 <tr><th scope="row">拜訪、探望（動詞）</th><td><div class="ex">三「<span class="hl">顧</span>」茅廬（漢末劉備往訪諸葛亮，共三次才得見；後比喻敬賢之禮或誠心邀請）<span class="src">（課本標註）</span></div></td></tr>
@@ -147,6 +350,8 @@
 <tr><th scope="row">副詞，豈、難道</th><td><div class="ex">使僕游揚足下名於天下，「<span class="hl">顧</span>」不美乎？<span class="src">（課本標註）</span></div></td></tr>
 </tbody></table></div>
 <p class="note">「顧」是多義字，作動詞時有「看、回頭看、拜訪、關注」等義，作副詞時有「反而、豈」等義，須依語境判斷；第32課「顧謂其妻曰」與第35課「去而顧之」的「顧」，都是「回頭看」。</p>
+</div>
+<div class="zi-block" style="--c:#2f9e44">
 <h2>二、比（ㄅㄧˋ，第35課為主）</h2>
 <div class="tablewrap"><table class="meaning blue"><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
 <tr><th scope="row">連續、接連（副詞）</th><td><div class="ex">「<span class="hl">比</span>」三旦立市<span class="src">（第35課，注釋②）</span></div><div class="ex">「<span class="hl">比</span>」三旦立於市，人莫與言<span class="src">（第35課，原文）</span></div></td></tr>
@@ -155,6 +360,8 @@
 <tr><th scope="row">等到（動詞）</th><td><div class="ex">「<span class="hl">比</span>」行百里<span class="src">（補充投影片）</span></div></td></tr>
 </tbody></table></div>
 <p class="note">以上「比」皆讀ㄅㄧˋ；作「比較、比賽」時則讀ㄅㄧˇ，兩者讀音與意思都不同，須留意區分。</p>
+</div>
+<div class="zi-block" style="--c:#1c7ed6">
 <h2>三、之（助詞、動詞、代詞，第31、32、35課為主）</h2>
 <div class="tablewrap"><table class="meaning orange"><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
 <tr><th scope="row">助詞，的</th><td><div class="ex">里「<span class="hl">之</span>」富室告之曰<span class="src">（第32課，原文）</span></div><div class="ex">負日「<span class="hl">之</span>」暄，人莫知者<span class="src">（第32課，原文）</span></div><div class="ex">唯其言「<span class="hl">之</span>」時也<span class="src">（第34課，課本標註）</span></div><div class="ex">臣請獻一朝「<span class="hl">之</span>」賈<span class="src">（第35課，原文）</span></div></td></tr>
@@ -164,8 +371,10 @@
 <tr><th scope="row">代詞，指人</th><td><div class="ex">里之富室告「<span class="hl">之</span>」曰（指宋國田夫）<span class="src">（第32課，原文）</span></div></td></tr>
 </tbody></table></div>
 <p class="note">「之」的用法很多，代詞須依上下文判斷所指的人、事、物；「人莫之知」是否定句中賓語前置的倒裝句，語序還原後是「人莫知之」。</p>
+</div>
+<div class="zi-block" style="--c:#ae3ec9">
 <h2>四、以、於、乃、唯、莫、去、嘗、恆（第31–35課）</h2>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
+<div class="tablewrap"><table class="meaning"><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
 <tr><th scope="row">以：介詞，用</th><td><div class="ex">「<span class="hl">以</span>」椎毀之（用椎子敲毀）<span class="src">（第31課，課本標註）</span></div></td></tr>
 <tr><th scope="row">意動用法（以……為……，認為……）</th><td><div class="ex">昔人有「<span class="hl">美</span>」戎菽、「<span class="hl">甘</span>」枲莖（以戎菽為美、以枲莖為甘）<span class="src">（第32課，課本標註）</span></div></td></tr>
 <tr><th scope="row">於：介詞，在</th><td><div class="ex">自曝「<span class="hl">於</span>」日（在太陽下曬）<span class="src">（第32課，原文）</span></div><div class="ex">比三旦立「<span class="hl">於</span>」市（在市場上）<span class="src">（第35課，原文）</span></div></td></tr>
@@ -181,6 +390,8 @@
 <tr><th scope="row">悖：形容詞，違背情理</th><td><div class="ex">惡己自聞之，「<span class="hl">悖</span>」矣<span class="src">（第31課，注釋⑩）</span></div></td></tr>
 </tbody></table></div>
 <p class="note">「乃」在本單元作「於是」（第35課），與第30課「才」的用法不同；「莫」在「人莫之知」中是「沒有人」。</p>
+</div>
+<div class="zi-block" style="--c:#0b7285">
 <h2>五、人稱代詞與句式（我、你、省略主語、轉品）</h2>
 <div class="tablewrap"><table class="meaning blue"><thead><tr><th>意義（詞性）</th><th>例句（出處）</th></tr></thead><tbody>
 <tr><th scope="row">我，代詞（自稱）</th><td><div class="ex">予＝余＝吾，皆為「我」的自稱（複習）<span class="src">（課本標註）</span></div></td></tr>
@@ -192,150 +403,40 @@
 <tr><th scope="row">借代</th><td><div class="ex">有乘「<span class="hl">軒冕</span>」過門者（以軒車、冕禮帽借代官位爵祿或顯貴的人）<span class="src">（第33課，注釋⑦）</span></div></td></tr>
 </tbody></table></div>
 <p class="note">「予、余、吾」是一般自稱；「愚、某、僕」是自謙的自稱；「汝、爾、子、若、君、卿」都是稱對方「你」，其中「君」「卿」帶有敬重或親暱的口吻。</p>
-<h2 id="idioms">六、成語整理</h2>
-<h3>課文成語</h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>成語</th><th>意思</th><th>出處</th></tr></thead><tbody>
-<tr><th scope="row">掩耳盜鐘</th><td>比喻自己欺騙自己，明明無法隱瞞卻還想掩蓋事實。</td><td>第31課</td></tr>
-<tr><th scope="row">野人獻曝</th><td>比喻平凡人所貢獻的平凡事物；亦用為人對所獻東西或意見的自謙之詞。</td><td>第32課</td></tr>
-<tr><th scope="row">割席分坐（割席）</th><td>比喻朋友絕交。</td><td>第33課</td></tr>
-<tr><th scope="row">伯樂一顧</th><td>比喻才能受人賞識、肯定。</td><td>第35課</td></tr>
-</tbody></table></div>
-<h3>「顧」「比」相關成語</h3>
-<div class="tablewrap"><table class="meaning blue"><thead><tr><th>成語</th><th>意思</th><th>出處</th></tr></thead><tbody>
-<tr><th scope="row">三顧茅廬</th><td>漢末劉備往訪諸葛亮，共三次才得見；後比喻敬賢之禮或誠心邀請。</td><td>顧（補充投影片）</td></tr>
-<tr><th scope="row">顧此失彼</th><td>注意這個卻忽略了那個，指不能全面兼顧。</td><td>顧（補充投影片）</td></tr>
-<tr><th scope="row">奮不顧身</th><td>勇往直前，不顧生死。</td><td>顧（補充投影片）</td></tr>
-<tr><th scope="row">後顧之憂</th><td>指後方的憂慮或事後可能發生的麻煩。</td><td>顧（補充投影片）</td></tr>
-<tr><th scope="row">櫛次鱗比</th><td>形容排列密集而整齊。</td><td>比（補充投影片）</td></tr>
-<tr><th scope="row">朋比為奸</th><td>結黨營私，做壞事。</td><td>比（補充投影片）</td></tr>
-</tbody></table></div>
-<h3>課本練習相關成語</h3>
-<div class="tablewrap"><table class="meaning orange"><thead><tr><th>成語</th><th>意思</th><th>出處</th></tr></thead><tbody>
-<tr><th scope="row">井底之蛙</th><td>比喻見識淺陋的人（可用來形容本文的田夫）。</td><td>第32課，補充</td></tr>
-<tr><th scope="row">老馬識途</th><td>後稱經歷豐富練達的人。</td><td>第32課，課本標註</td></tr>
-<tr><th scope="row">孤芳自賞</th><td>比喻自命清高，自我欣賞。</td><td>第32課，課本標註</td></tr>
-<tr><th scope="row">尸位素餐</th><td>占著職位享受俸祿而不做事。</td><td>第33課，課本標註</td></tr>
-<tr><th scope="row">剛愎自用</th><td>性情倔強，固執己見。</td><td>第33課，課本標註</td></tr>
-<tr><th scope="row">好逸惡勞</th><td>貪圖安逸，憎惡勞動。</td><td>第33課，課本標註</td></tr>
-</tbody></table></div>
-</section>
-<section id="notes">
-<h2 class="newpage">各課重點</h2>
-<h3 class="lesson">第31課　掩耳盜鐘<small>　《呂氏春秋》</small></h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>詞語</th><th>意思</th></tr></thead><tbody><tr><th scope="row">鐘</th><td>古代一種中空、用銅或鐵製成之打擊樂器</td></tr><tr><th scope="row">負</th><td>背負、以背馱物</td></tr><tr><th scope="row">椎</th><td>敲打東西的器具</td></tr><tr><th scope="row">毀</th><td>破壞</td></tr><tr><th scope="row">況然</th><td>敲鐘時所發出「況」的聲響；況，狀聲詞</td></tr><tr><th scope="row">奪</th><td>強取、搶奪</td></tr><tr><th scope="row">遽</th><td>急忙</td></tr><tr><th scope="row">掩</th><td>遮蓋</td></tr><tr><th scope="row">惡</th><td>害怕、畏懼</td></tr><tr><th scope="row">悖</th><td>違背情理</td></tr></tbody></table></div>
-<p class="note">原文：有得鐘者，欲負而走，則鐘大不可負；以椎毀之，鐘況然有音。恐人聞之而奪己也，遽掩其耳。惡人聞之，可也；惡己自聞之，悖矣。</p>
-<p class="note">得鐘者想偷鐘，卻因鐘太大背不走，只好用椎子敲碎，沒想到鐘一敲就發出巨響；他擔心被人聽見而來搶奪，竟急忙摀住自己的耳朵。</p>
-<p class="note">怕別人聽到鐘聲，還算可以理解；但以為摀住自己的耳朵，別人就聽不到，就違背情理了。</p>
-<p class="note">成語「掩耳盜鐘」：比喻自己欺騙自己，明明無法隱瞞卻還想掩蓋事實。相關俗語：偷雞不著蝕把米（本想占便宜，反而吃虧）、偷來的鑼鼓敲不得（做賊心虛，事情不能張揚）、閉著眼睛捉麻雀（自己騙自己，或不清楚狀況就行動）。</p>
-<h3 class="lesson">第32課　野人獻曝<small>　《列子》</small></h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>詞語</th><th>意思</th></tr></thead><tbody><tr><th scope="row">衣</th><td>穿（名詞轉為動詞）</td></tr><tr><th scope="row">縕黂</th><td>亂麻</td></tr><tr><th scope="row">暨</th><td>至、及</td></tr><tr><th scope="row">東作</th><td>春耕</td></tr><tr><th scope="row">曝</th><td>在陽光底下晒</td></tr><tr><th scope="row">廣廈</th><td>寬廣高大的房屋</td></tr><tr><th scope="row">隩</th><td>溫暖</td></tr><tr><th scope="row">綿纊狐貉</th><td>用細絲綿和狐、貉皮毛作成的裘衣</td></tr><tr><th scope="row">顧</th><td>回首、回頭看</td></tr><tr><th scope="row">暄</th><td>溫暖</td></tr><tr><th scope="row">菽</th><td>豆類</td></tr><tr><th scope="row">蜇</th><td>毒蟲叮咬</td></tr><tr><th scope="row">哂</th><td>嘲笑</td></tr></tbody></table></div>
-<p class="note">原文：昔宋國有田夫，常衣縕黂，僅以過冬。暨春東作，自曝於日，不知天下之有廣廈隩室，綿纊狐貉。顧謂其妻曰：「負日之暄，人莫知者；以獻吾君，將有重賞。」里之富室告之曰：「昔人有美戎菽、甘枲莖、芹萍子者，對鄉豪稱之。鄉豪取而嘗之，蜇於口，慘於腹，眾哂而怨之，其人大慙。子，此類也。」</p>
-<p class="note">宋國農夫冬天只穿破舊的亂麻衣，到了春耕曬太陽覺得溫暖，就以為這是天下人都不知道的好方法，想獻給國君領賞；不知天下還有大房子、暖室與皮裘。</p>
-<p class="note">富人說了昔人獻野菜的故事，暗指農夫也是自以為是好東西，其實別人未必稀罕。</p>
-<p class="note">成語「野人獻曝」：後比喻平凡人所貢獻的平凡事物，亦用為人對所獻東西或意見的自謙之詞。相近的成語有「井底之蛙」（見識淺陋）；「老馬識途」則是稱經歷豐富練達的人，「孤芳自賞」則指自命清高、自我欣賞，兩者意思不同。</p>
-<h3 class="lesson">第33課　管寧割席<small>　《世說新語》</small></h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>詞語</th><th>意思</th></tr></thead><tbody><tr><th scope="row">管寧</th><td>字幼安，三國魏朱虛人</td></tr><tr><th scope="row">華歆</th><td>字子魚，魏高唐人，魏明帝時任太尉</td></tr><tr><th scope="row">捉</th><td>拿</td></tr><tr><th scope="row">擲</th><td>拋投</td></tr><tr><th scope="row">嘗</th><td>曾經</td></tr><tr><th scope="row">席</th><td>坐席</td></tr><tr><th scope="row">軒冕</th><td>古代貴族官員所坐的軒車和所戴的禮帽，借指官位爵祿或顯貴的人</td></tr><tr><th scope="row">廢書</th><td>放下書本</td></tr></tbody></table></div>
-<p class="note">原文：管寧、華歆共園中鋤菜，見地有片金；管揮鋤與瓦石不異，華捉而擲去之。又嘗同席讀書，有乘軒冕過門者，寧讀如故，歆廢書出看。寧割席分坐，曰：「子非吾友也。」</p>
-<p class="note">管寧見到黃金，如同看見瓦礫石頭般毫不動心；華歆雖然把金子扔掉，卻先撿起來看了看。</p>
-<p class="note">又有一次同席讀書，有達官貴人乘車經過，管寧照舊專心讀書，華歆卻放下書本出去觀看；管寧便把席子割開，分開來坐，說：「你不是我的朋友了。」</p>
-<p class="note">成語「割席分坐」（割席）：比喻朋友絕交。文中兩件事分別顯示兩人對財富、官位的態度不同，志趣不合，因而絕交。</p>
-<h3 class="lesson">第34課　多言何益<small>　《墨子》</small></h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>詞語</th><th>意思</th></tr></thead><tbody><tr><th scope="row">子禽</th><td>墨子的學生</td></tr><tr><th scope="row">益</th><td>好處</td></tr><tr><th scope="row">恆</th><td>經常</td></tr><tr><th scope="row">敝</th><td>通「疲」，疲倦</td></tr><tr><th scope="row">晨雞</th><td>報曉的公雞</td></tr><tr><th scope="row">時夜</th><td>司晨報曉</td></tr><tr><th scope="row">時</th><td>適當的時機</td></tr><tr><th scope="row">蝦蟆</th><td>ㄏㄚˊ ˙ㄇㄚ，蛤蟆</td></tr></tbody></table></div>
-<p class="note">原文：子禽問曰：「多言有益乎？」墨子曰：「蝦蟆、蛙、蠅，日夜恆鳴，口乾舌敝，然而不聽。今觀晨雞，時夜而鳴，天下振動。多言何益？唯其言之時也。」</p>
-<p class="note">墨子以蝦蟆、蛙、蠅日夜不停鳴叫，雖然叫到口乾舌疲，卻沒人理會，來對比晨雞在適當的時候啼叫，就能驚醒天下人。</p>
-<p class="note">本文用「三種動物」和「晨雞」形成對比（映襯），說明話說得多不見得有益，重點在於說得是不是時候。</p>
-<p class="note">相關諺語：日出萬言，必有一傷（話說多了容易出錯）；一言既出，駟馬難追（話一旦說出口就很難收回，須謹慎）；良藥苦口利於病，忠言逆耳利於行；逢人且說三分話，未可全拋一片心（對別人說話要有所保留）。</p>
-<h3 class="lesson">第35課　伯樂一顧<small>　《戰國策》</small></h3>
-<div class="tablewrap"><table class="meaning "><thead><tr><th>詞語</th><th>意思</th></tr></thead><tbody><tr><th scope="row">駿馬</th><td>好馬、良馬</td></tr><tr><th scope="row">比</th><td>連續、接連（ㄅㄧˋ）</td></tr><tr><th scope="row">三旦</th><td>三天</td></tr><tr><th scope="row">莫</th><td>沒有（人）</td></tr><tr><th scope="row">伯樂</th><td>善於相馬的人</td></tr><tr><th scope="row">還</th><td>通「旋」，旋轉、繞圈子</td></tr><tr><th scope="row">去</th><td>離開</td></tr><tr><th scope="row">顧</th><td>回頭看</td></tr><tr><th scope="row">賈</th><td>通「價」，指報酬</td></tr><tr><th scope="row">乃</th><td>於是</td></tr></tbody></table></div>
-<p class="note">原文：人有賣駿馬者，比三旦立市，人莫之知。往見伯樂曰：「臣有駿馬，欲賣之，比三旦立於市，人莫與言。願子還而視之，去而顧之，臣請獻一朝之賈。」伯樂乃還而視之，去而顧之，一旦而馬價十倍。</p>
-<p class="note">賣馬人連續三天在市場賣不出好馬，於是請伯樂繞著馬看一圈，離開時再回頭看一眼，願意送一天的報酬作為謝禮；伯樂照做，一天之內馬價就漲了十倍。</p>
-<p class="note">馬的價值並沒有改變，改變的是相馬名家伯樂的青睞，說明人們常因權威的肯定而重視事物；成語「伯樂一顧」比喻才能受人賞識、肯定。</p>
-<p class="note">相關諺語：好馬不吃回頭草（有志氣的人不走回頭路）；路遙知馬力，日久見人心（時間能考驗出人心的真假）。</p>
-<h3>字音辨析</h3><div class="tablewrap"><table class="meaning "><thead><tr><th>字</th><th>讀音</th><th>例詞（出處）</th></tr></thead><tbody><tr><th scope="row">掩</th><td>ㄧㄢˇ</td><td>掩耳盜鐘（第31課）</td></tr><tr><th scope="row">椎</th><td>ㄓㄨㄟ</td><td>以椎毀之（第31課）</td></tr><tr><th scope="row">毀</th><td>ㄏㄨㄟˇ</td><td>以椎毀之（第31課）</td></tr><tr><th scope="row">遽</th><td>ㄐㄩˋ</td><td>遽掩其耳（第31課）</td></tr><tr><th scope="row">悖</th><td>ㄅㄟˋ</td><td>惡己自聞之，悖矣（第31課）</td></tr><tr><th scope="row">縕黂</th><td>ㄩㄣˋ　ㄈㄣˊ</td><td>常衣縕黂（第32課）</td></tr><tr><th scope="row">暨</th><td>ㄐㄧˋ</td><td>暨春東作（第32課）</td></tr><tr><th scope="row">曝</th><td>ㄆㄨˋ</td><td>自曝於日（第32課）</td></tr><tr><th scope="row">纊</th><td>ㄎㄨㄤˋ</td><td>綿纊狐貉（第32課）</td></tr><tr><th scope="row">貉</th><td>ㄏㄜˊ</td><td>綿纊狐貉（第32課）</td></tr><tr><th scope="row">暄</th><td>ㄒㄩㄢ</td><td>負日之暄（第32課）</td></tr><tr><th scope="row">哂</th><td>ㄕㄣˇ</td><td>眾哂而怨之（第32課）</td></tr><tr><th scope="row">華</th><td>ㄏㄨㄚˋ</td><td>華歆（第33課，姓氏）</td></tr><tr><th scope="row">歆</th><td>ㄒㄧㄣ</td><td>華歆（第33課）</td></tr><tr><th scope="row">鋤</th><td>ㄔㄨˊ</td><td>共園中鋤菜（第33課）</td></tr><tr><th scope="row">擲</th><td>ㄓˊ</td><td>華捉而擲去之（第33課）</td></tr><tr><th scope="row">軒冕</th><td>ㄒㄩㄢ　ㄇㄧㄢˇ</td><td>有乘軒冕過門者（第33課）</td></tr><tr><th scope="row">蝦蟆</th><td>ㄏㄚˊ　˙ㄇㄚ</td><td>蝦蟆、蛙、蠅（第34課）</td></tr><tr><th scope="row">恆</th><td>ㄏㄥˊ</td><td>日夜恆鳴（第34課）</td></tr><tr><th scope="row">駿</th><td>ㄐㄩㄣˋ</td><td>賣駿馬者（第35課）</td></tr><tr><th scope="row">賈</th><td>ㄐㄧㄚˋ</td><td>臣請獻一朝之賈（第35課，通「價」）</td></tr><tr><th scope="row">顧</th><td>ㄍㄨˋ</td><td>顧謂其妻曰、去而顧之（第32、35課）</td></tr><tr><th scope="row">比</th><td>ㄅㄧˋ</td><td>比三旦立市（第35課）</td></tr></tbody></table></div>
+</div>
+<div class="zi-block" style="--c:#c2255c">
+<h2>六、字音辨析（第31–35課）</h2>
+<div class="tablewrap"><table class="meaning"><thead><tr><th>字</th><th>讀音</th><th>例詞（出處）</th></tr></thead><tbody><tr><th scope="row">掩</th><td>ㄧㄢˇ</td><td>掩耳盜鐘（第31課）</td></tr><tr><th scope="row">椎</th><td>ㄓㄨㄟ</td><td>以椎毀之（第31課）</td></tr><tr><th scope="row">毀</th><td>ㄏㄨㄟˇ</td><td>以椎毀之（第31課）</td></tr><tr><th scope="row">遽</th><td>ㄐㄩˋ</td><td>遽掩其耳（第31課）</td></tr><tr><th scope="row">悖</th><td>ㄅㄟˋ</td><td>惡己自聞之，悖矣（第31課）</td></tr><tr><th scope="row">縕黂</th><td>ㄩㄣˋ　ㄈㄣˊ</td><td>常衣縕黂（第32課）</td></tr><tr><th scope="row">暨</th><td>ㄐㄧˋ</td><td>暨春東作（第32課）</td></tr><tr><th scope="row">曝</th><td>ㄆㄨˋ</td><td>自曝於日（第32課）</td></tr><tr><th scope="row">纊</th><td>ㄎㄨㄤˋ</td><td>綿纊狐貉（第32課）</td></tr><tr><th scope="row">貉</th><td>ㄏㄜˊ</td><td>綿纊狐貉（第32課）</td></tr><tr><th scope="row">暄</th><td>ㄒㄩㄢ</td><td>負日之暄（第32課）</td></tr><tr><th scope="row">哂</th><td>ㄕㄣˇ</td><td>眾哂而怨之（第32課）</td></tr><tr><th scope="row">華</th><td>ㄏㄨㄚˋ</td><td>華歆（第33課，姓氏）</td></tr><tr><th scope="row">歆</th><td>ㄒㄧㄣ</td><td>華歆（第33課）</td></tr><tr><th scope="row">鋤</th><td>ㄔㄨˊ</td><td>共園中鋤菜（第33課）</td></tr><tr><th scope="row">擲</th><td>ㄓˊ</td><td>華捉而擲去之（第33課）</td></tr><tr><th scope="row">軒冕</th><td>ㄒㄩㄢ　ㄇㄧㄢˇ</td><td>有乘軒冕過門者（第33課）</td></tr><tr><th scope="row">蝦蟆</th><td>ㄏㄚˊ　˙ㄇㄚ</td><td>蝦蟆、蛙、蠅（第34課）</td></tr><tr><th scope="row">恆</th><td>ㄏㄥˊ</td><td>日夜恆鳴（第34課）</td></tr><tr><th scope="row">駿</th><td>ㄐㄩㄣˋ</td><td>賣駿馬者（第35課）</td></tr><tr><th scope="row">賈</th><td>ㄐㄧㄚˋ</td><td>臣請獻一朝之賈（第35課，通「價」）</td></tr><tr><th scope="row">顧</th><td>ㄍㄨˋ</td><td>顧謂其妻曰、去而顧之（第32、35課）</td></tr><tr><th scope="row">比</th><td>ㄅㄧˋ</td><td>比三旦立市（第35課）</td></tr></tbody></table></div>
+<p class="note">「椎」讀ㄓㄨㄟ、「擲」讀ㄓˊ；「衣」作動詞「穿」時讀ㄧˋ；「賈」通「價」時讀ㄐㄧㄚˋ；「比」作「連續」解時讀ㄅㄧˋ。</p>
+</div>
 </section>
 <section id="practice">
 <h2 class="newpage">古文今讀 31–35 課　虛字練習</h2>
 <p class="infoline printonly">班級：＿＿＿＿　座號：＿＿＿＿　姓名：＿＿＿＿＿＿　　得分：＿＿＿＿</p>
-<p class="rule">選擇題（每題 5 分，共 100 分）。粗體加底線的字為題目所問的字。直接點選答案作答。</p>
-<h3 class="lesson">虛字練習（課文中的虛字）</h3>
+<p class="rule">選擇題（每題 5 分，共 75 分）。粗體加底線的字為題目所問的字。直接點選答案作答。</p>
 <ol class="qs">
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「恐人聞之而奪己也，<u><b>遽</b></u>掩其耳」的「遽」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 遙遠<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 急忙<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 悄悄<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 嚴厲<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">遽：副詞，急忙，指偷鐘者急忙摀住自己的耳朵。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「恐人聞之而奪<u><b>己</b></u>也」的「己」，指的是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 得鐘者的朋友<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 偷鐘者<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 鐘的主人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 路過的行人<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">己：代詞，指偷鐘者自己，怕別人聽到鐘聲來搶。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「以椎毀<u><b>之</b></u>」的「之」，指的是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 椎子<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 鐘<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 偷鐘者<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 別人<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">之：代詞，指鐘；偷鐘者用椎子把鐘敲毀。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「以椎毀之」的「<u><b>以</b></u>」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 因為<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 用<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 認為<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 已經<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">以：介詞，用，用椎子敲毀鐘。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「不知天下<u><b>之</b></u>有廣廈隩室」的「之」，詞性與用法是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 助詞，的<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 助詞，無意義<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 動詞，到<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 代詞，指人<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">之：助詞，用在主語與謂語之間，無意義，不必譯出。</span></div></li>
-<li class="q" data-a="C" data-sec="v" data-pts="5"><div class="stem">「對鄉豪稱<u><b>之</b></u>」的「之」，指的是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 鄉豪<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 昔人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 戎菽、甘枲莖、芹、萍子等四種農作物<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 宋國田夫<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">之：代詞，指上述四種農作物（課本標註）。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「<u><b>顧</b></u>謂其妻曰」的「顧」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 拜訪<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 回頭看<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 照顧<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 反而<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">顧：回首、回頭看（第32課注釋⑨），田夫回頭對妻子說話。</span></div></li>
-<li class="q" data-a="C" data-sec="v" data-pts="5"><div class="stem">下列「顧」的意思，何者與「去而<u><b>顧</b></u>之」的「顧」相同？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 三顧茅廬<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 顧此失彼<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 後顧之憂<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 顧不如蜀鄙之僧哉<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">去而顧之的「顧」是回頭看；後顧之憂也是回頭看。三顧茅廬是拜訪，顧此失彼是關注照應，顧不如是反而。</span></div></li>
-<li class="q" data-a="D" data-sec="v" data-pts="5"><div class="stem">「人之立志，<u><b>顧</b></u>不如蜀鄙之僧哉？」的「顧」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 看<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 拜訪<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 照應<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 反而、連<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">顧：副詞，反而、連，此句是用激問的語氣。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「三<u><b>顧</b></u>茅廬」的「顧」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 回頭看<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 拜訪、探望<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 關注、照應<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 反而<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">三顧茅廬指劉備三次拜訪諸葛亮，顧是拜訪、探望。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「<u><b>比</b></u>三旦立市」的「比」，讀音與意思是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> ㄅㄧˇ，比較<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> ㄅㄧˋ，連續、接連<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> ㄅㄧˇ，比賽<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> ㄅㄧˋ，結黨營私<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">比：讀ㄅㄧˋ，連續、接連（第35課注釋②）。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「<u><b>比</b></u>三旦立市」的意思是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 比較三天的市價<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 接連三天站在市場上<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 等到第三天才到市場<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 三個早晨都在比賽<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">比：連續、接連（讀ㄅㄧˋ），全句指賣馬人接連三天站在市場上賣馬；「等到」是「比行百里」的用法，「比較」則讀ㄅㄧˇ，都不適用。</span></div></li>
-<li class="q" data-a="C" data-sec="v" data-pts="5"><div class="stem">「比三旦立市，人莫<u><b>之</b></u>知」的「之」，指的是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 賣駿馬的人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 伯樂<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 賣駿馬這件事<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 市場<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">之：代詞，指賣駿馬這件事；這是倒裝句，還原為「人莫知之」。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「伯樂<u><b>乃</b></u>還而視之」的「乃」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 竟然<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 於是<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 才<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 就是<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">乃：於是，伯樂聽了請求，於是繞著馬看（第35課注釋⑩）。</span></div></li>
-<li class="q" data-a="B" data-sec="v" data-pts="5"><div class="stem">「願<u><b>子</b></u>還而視之」的「子」，意思是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 孩子<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 你<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 我<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 他<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">子：第二人稱代詞，你，指伯樂（汝＝爾＝子＝若＝君＝卿）。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「恐人聞之而奪己也，<u><b>遽</b></u>掩其耳」的「遽」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 遙遠<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 急忙<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 悄悄<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 嚴厲<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">遽：副詞，急忙，指偷鐘者急忙摀住自己的耳朵。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「恐人聞之而奪<u><b>己</b></u>也」的「己」，指的是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 得鐘者的朋友<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 偷鐘者<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 鐘的主人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 路過的行人<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">己：代詞，指偷鐘者自己，怕別人聽到鐘聲來搶。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「以椎毀<u><b>之</b></u>」的「之」，指的是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 椎子<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 鐘<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 偷鐘者<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 別人<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">之：代詞，指鐘；偷鐘者用椎子把鐘敲毀。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「以椎毀之」的「<u><b>以</b></u>」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 因為<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 用<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 認為<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 已經<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">以：介詞，用，用椎子敲毀鐘。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「不知天下<u><b>之</b></u>有廣廈隩室」的「之」，詞性與用法是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 助詞，的<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 助詞，無意義<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 動詞，到<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 代詞，指人<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">之：助詞，用在主語與謂語之間，無意義，不必譯出。</span></div></li>
+<li class="q" data-a="C" data-pts="5" data-sec="p"><div class="stem">「對鄉豪稱<u><b>之</b></u>」的「之」，指的是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 鄉豪<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 昔人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 戎菽、甘枲莖、芹、萍子等四種農作物<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 宋國田夫<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">之：代詞，指上述四種農作物（課本標註）。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「<u><b>顧</b></u>謂其妻曰」的「顧」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 拜訪<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 回頭看<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 照顧<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 反而<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">顧：回首、回頭看（第32課注釋⑨），田夫回頭對妻子說話。</span></div></li>
+<li class="q" data-a="C" data-pts="5" data-sec="p"><div class="stem">下列「顧」的意思，何者與「去而<u><b>顧</b></u>之」的「顧」相同？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 三顧茅廬<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 顧此失彼<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 後顧之憂<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 顧不如蜀鄙之僧哉<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">去而顧之的「顧」是回頭看；後顧之憂也是回頭看。三顧茅廬是拜訪，顧此失彼是關注照應，顧不如是反而。</span></div></li>
+<li class="q" data-a="D" data-pts="5" data-sec="p"><div class="stem">「人之立志，<u><b>顧</b></u>不如蜀鄙之僧哉？」的「顧」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 看<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 拜訪<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 照應<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 反而、連<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">顧：副詞，反而、連，此句是用激問的語氣。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「三<u><b>顧</b></u>茅廬」的「顧」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 回頭看<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 拜訪、探望<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 關注、照應<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 反而<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">三顧茅廬指劉備三次拜訪諸葛亮，顧是拜訪、探望。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「<u><b>比</b></u>三旦立市」的「比」，讀音與意思是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> ㄅㄧˇ，比較<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> ㄅㄧˋ，連續、接連<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> ㄅㄧˇ，比賽<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> ㄅㄧˋ，結黨營私<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">比：讀ㄅㄧˋ，連續、接連（第35課注釋②）。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「<u><b>比</b></u>三旦立市」的意思是？</div><ul class="opts one"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 比較三天的市價<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 接連三天站在市場上<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 等到第三天才到市場<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 三個早晨都在比賽<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">比：連續、接連（讀ㄅㄧˋ），全句指賣馬人接連三天站在市場上賣馬；「等到」是「比行百里」的用法，「比較」則讀ㄅㄧˇ，都不適用。</span></div></li>
+<li class="q" data-a="C" data-pts="5" data-sec="p"><div class="stem">「比三旦立市，人莫<u><b>之</b></u>知」的「之」，指的是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 賣駿馬的人<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 伯樂<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 賣駿馬這件事<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 市場<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">之：代詞，指賣駿馬這件事；這是倒裝句，還原為「人莫知之」。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「伯樂<u><b>乃</b></u>還而視之」的「乃」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 竟然<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 於是<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 才<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 就是<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">乃：於是，伯樂聽了請求，於是繞著馬看（第35課注釋⑩）。</span></div></li>
+<li class="q" data-a="B" data-pts="5" data-sec="p"><div class="stem">「願<u><b>子</b></u>還而視之」的「子」，意思是？</div><ul class="opts"><li><button class="opt" data-k="A" type="button"><span class="lab">(A)</span> 孩子<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="B" type="button"><span class="lab">(B)</span> 你<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="C" type="button"><span class="lab">(C)</span> 我<span aria-hidden="true" class="mark"></span></button></li><li><button class="opt" data-k="D" type="button"><span class="lab">(D)</span> 他<span aria-hidden="true" class="mark"></span></button></li></ul><div class="exp" hidden=""><b class="res"></b><span class="et">子：第二人稱代詞，你，指伯樂（汝＝爾＝子＝若＝君＝卿）。</span></div></li>
 </ol>
-<p class="sec-score" data-sec="v"></p>
-<h3 class="lesson">成語、修辭與文學常識</h3>
-<ol class="qs" style="counter-reset: q 15">
-<li class="q" data-a="B" data-sec="c" data-pts="5"><div class="stem">成語「掩耳盜鐘」比喻什麼？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 做了壞事就心虛害怕<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 自己欺騙自己，以為別人也不知道<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 做事不擇手段<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 與人團結合作<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">偷鐘者摀住自己的耳朵，就以為別人也聽不到，比喻自欺欺人。</span></div></li>
-<li class="q" data-a="B" data-sec="c" data-pts="5"><div class="stem">提出建議時，有人說「野人獻曝，還請多多指教」，這句話的用意是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 炫耀自己的才華<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 自謙，表示自己的意見平凡淺薄<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 批評別人不夠專業<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 抗議別人不聽勸告<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">野人獻曝：亦用為人對所獻東西或意見的自謙之詞。</span></div></li>
-<li class="q" data-a="A" data-sec="c" data-pts="5"><div class="stem">「割席分坐」（割席）在後世用來比喻？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 朋友絕交<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 平分財物<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 分工合作<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 共同讀書<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">管寧因與華歆志趣不合，割席分坐，後比喻朋友絕交。</span></div></li>
-<li class="q" data-a="A" data-sec="c" data-pts="5"><div class="stem">〈多言何益〉以蝦蟆、蛙、蠅與晨雞相互對照，使用的是哪一種修辭？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 映襯（對比）<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 誇飾<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 摹寫<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 借代<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">把日夜鳴叫卻無人理會的三種動物，與適時啼叫的晨雞對比，屬於映襯（對比）。</span></div></li>
-<li class="q" data-a="A" data-sec="c" data-pts="5"><div class="stem">成語「伯樂一顧」比喻什麼？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 才能受人賞識、肯定<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 做事拖延不決<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 花錢精打細算<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 回頭是岸<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">伯樂一顧：比喻才能受人賞識、肯定。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="c"></p>
-</section>
-<section id="lessonqs">
-<h2 class="newpage">古文今讀 31–35 課　課文選擇題</h2>
-<p class="infoline printonly">班級：＿＿＿＿　座號：＿＿＿＿　姓名：＿＿＿＿＿＿　　得分：＿＿＿＿</p>
-<p class="rule">課文文意選擇題（每課 4 題，每題 5 分，共 100 分）。直接點選答案作答。</p>
-<h3 class="lesson">第31課　掩耳盜鐘<small>　《呂氏春秋》</small></h3>
-<ol class="qs">
-<li class="q" data-a="A" data-sec="l31" data-pts="5"><div class="stem">得鐘者一開始為什麼無法直接把鐘背走？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 鐘太大，無法背負<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 鐘太貴重，不敢碰<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 有人守在旁邊<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 天色太暗看不清<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">文中「鐘大不可負」，鐘太大所以背不走。</span></div></li>
-<li class="q" data-a="B" data-sec="l31" data-pts="5"><div class="stem">得鐘者打算用椎子把鐘敲毀，最可能的目的是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 想聽鐘聲<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 把鐘敲碎，方便分批帶走<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 發洩心中怒氣<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 測試鐘的品質<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">鐘太大無法背走，所以想敲碎後再帶走。</span></div></li>
-<li class="q" data-a="C" data-sec="l31" data-pts="5"><div class="stem">得鐘者為什麼「遽掩其耳」？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 討厭嘈雜的聲音<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 耳朵受傷了<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 怕別人聽到鐘聲來搶奪<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 想聽外面的動靜<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「恐人聞之而奪己也」，他害怕別人聽到鐘聲，就會來搶鐘。</span></div></li>
-<li class="q" data-a="B" data-sec="l31" data-pts="5"><div class="stem">本文所批評的，是哪一種人？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 貪心不足的人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 自己欺騙自己，以為別人也不知道的人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 做事不夠謹慎的人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 不肯認錯的人<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">怕別人聽到還算合理，但摀住自己的耳朵就以為別人聽不到，是自欺欺人，「悖矣」。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="l31"></p>
-<h3 class="lesson">第32課　野人獻曝<small>　《列子》</small></h3>
-<ol class="qs">
-<li class="q" data-a="B" data-sec="l32" data-pts="5"><div class="stem">宋國田夫認為「人莫知」的好東西是什麼？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 皮裘大衣<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 曬太陽取暖的溫暖<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 自己種的野菜<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 廣廈隩室<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「負日之暄，人莫知者」，他以為曬太陽的溫暖是別人不知道的。</span></div></li>
-<li class="q" data-a="A" data-sec="l32" data-pts="5"><div class="stem">田夫為什麼想把曬太陽的方法獻給國君？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 他不知道天下還有廣廈、綿纊等更好的取暖方式，才以為是難得的好方法<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 他想藉此諷刺國君<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 他想跟富人比較誰更聰明<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 國君要求百姓進獻<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">文中說他「不知天下之有廣廈隩室，綿纊狐貉」，見識淺陋，因此自以為獻曝可得重賞。</span></div></li>
-<li class="q" data-a="B" data-sec="l32" data-pts="5"><div class="stem">富室講述「昔人」獻野菜的故事，主要用意是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 稱讚昔人的品味<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 告訴田夫他的想法就像昔人一樣，自己覺得珍貴，別人未必稀罕<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 教田夫怎麼種野菜<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 勸田夫改獻野菜給國君<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">昔人以粗菜為美味，鄉豪嘗了卻難受，被嘲笑；富室藉此說田夫「此類也」。</span></div></li>
-<li class="q" data-a="C" data-sec="l32" data-pts="5"><div class="stem">「子，此類也」的「子」，指的是？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 昔人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 鄉豪<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 宋國田夫<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 富室<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">子＝汝＝你，富室對田夫說話，指宋國田夫。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="l32"></p>
-<h3 class="lesson">第33課　管寧割席<small>　《世說新語》</small></h3>
-<ol class="qs">
-<li class="q" data-a="B" data-sec="l33" data-pts="5"><div class="stem">管寧見到地上的黃金，有什麼反應？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 撿起來看了看<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 繼續揮鋤，把黃金視同瓦石<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 立刻據為己有<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 交給官府<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">文中「管揮鋤與瓦石不異」，管寧把黃金看得和瓦石一樣。</span></div></li>
-<li class="q" data-a="B" data-sec="l33" data-pts="5"><div class="stem">華歆「廢書出看」乘軒冕過門者，顯示他是怎樣的人？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 專心向學<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 對榮華富貴仍心生嚮往<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 心地善良<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 喜歡熱鬧、愛看名人<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">看到達官貴人經過就放下書出去看，可見他心慕榮利，與管寧不同。</span></div></li>
-<li class="q" data-a="A" data-sec="l33" data-pts="5"><div class="stem">「有乘軒冕過門者」的「軒冕」，運用了哪一種修辭？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 借代<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 譬喻<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 誇飾<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 排比<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">以軒車和冕禮帽借代官位爵祿或顯貴的人，屬於借代。</span></div></li>
-<li class="q" data-a="B" data-sec="l33" data-pts="5"><div class="stem">管寧說「子非吾友也」，主要是因為？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 華歆偷了他的金子<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 兩人志趣、價值觀不合<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 華歆吵到他讀書<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 兩人為金子吵架<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">兩件事顯示管寧淡泊名利，華歆心慕榮利，志趣不合，因此割席絕交。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="l33"></p>
-<h3 class="lesson">第34課　多言何益<small>　《墨子》</small></h3>
-<ol class="qs">
-<li class="q" data-a="A" data-sec="l34" data-pts="5"><div class="stem">子禽向墨子請教的問題是什麼？</div><ul class="opts"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 多言有沒有好處<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 如何養雞<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 怎麼學習才有效<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 如何與人辯論<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「多言有益乎？」就是子禽的問題。</span></div></li>
-<li class="q" data-a="A" data-sec="l34" data-pts="5"><div class="stem">墨子舉蝦蟆、蛙、蠅為例，想說明什麼？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 牠們日夜鳴叫，口乾舌疲，卻沒人理會，說明多言無益<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 牠們的叫聲很好聽<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 牠們生性喜歡吵鬧<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 牠們比晨雞勤勞<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「日夜恆鳴，口乾舌敝，然而不聽」，說明話多卻無人理會。</span></div></li>
-<li class="q" data-a="B" data-sec="l34" data-pts="5"><div class="stem">晨雞為什麼能讓「天下振動」？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 叫聲特別大<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 牠在適當的時機（黎明）啼叫<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 牠叫得比蛙更久<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 牠的數量特別多<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">文末「唯其言之時也」，關鍵在於適當的時機。</span></div></li>
-<li class="q" data-a="B" data-sec="l34" data-pts="5"><div class="stem">本文最主要的意思是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 話說得愈多，愈能說服別人<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 說話貴在切合時機，不在多寡<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 說話應該輕聲細語<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 說話要看對象<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「多言何益？唯其言之時也」，重點是說話要切合時機。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="l34"></p>
-<h3 class="lesson">第35課　伯樂一顧<small>　《戰國策》</small></h3>
-<ol class="qs">
-<li class="q" data-a="B" data-sec="l35" data-pts="5"><div class="stem">賣馬人為什麼去見伯樂？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 想請伯樂買下自己的馬<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 馬連續三天在市場都賣不出去，希望借伯樂的名氣<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 想向伯樂學習相馬<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 想與伯樂比賽相馬<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">「比三旦立於市，人莫與言」，馬賣不出去，才請伯樂來看。</span></div></li>
-<li class="q" data-a="A" data-sec="l35" data-pts="5"><div class="stem">「伯樂乃還而視之，去而顧之」，表現出伯樂怎樣的態度？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 依依不捨，十分欣賞<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 冷漠不在意<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 猶豫不決<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 憤怒不滿<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">伯樂繞著馬看了又看，離開時還回頭再看，表現出欣賞與不捨。</span></div></li>
-<li class="q" data-a="B" data-sec="l35" data-pts="5"><div class="stem">「一旦而馬價十倍」的主要原因是？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 馬突然變得更加健壯<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 相馬名家伯樂的青睞，使人們認同這匹馬的價值<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 賣馬人降價促銷<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 市場上缺馬<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">馬本身沒有改變，是伯樂的名氣讓大家改觀。</span></div></li>
-<li class="q" data-a="A" data-sec="l35" data-pts="5"><div class="stem">「人莫之知」是哪一種句型？</div><ul class="opts one"><li><button type="button" class="opt" data-k="A"><span class="lab">(A)</span> 否定句中賓語前置的倒裝句，還原為「人莫知之」<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="B"><span class="lab">(B)</span> 疑問句<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="C"><span class="lab">(C)</span> 感嘆句<span class="mark" aria-hidden="true"></span></button></li><li><button type="button" class="opt" data-k="D"><span class="lab">(D)</span> 判斷句<span class="mark" aria-hidden="true"></span></button></li></ul><div class="exp" hidden><b class="res"></b><span class="et">否定句中，代詞賓語「之」提到動詞前，語序還原為「人莫知之」。</span></div></li>
-</ol>
-<p class="sec-score" data-sec="l35"></p>
+<p class="sec-score" data-sec="p"></p>
 </section>
 <section id="answers">
 <h2 class="newpage">參考答案與解析</h2>
 <details class="answers"><summary>顯示參考答案與解析（老師用）</summary>
-<h3>壹、虛字練習</h3>
-<div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
+<h3>壹、虛字練習</h3><div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
 <tr><td class="c">1</td><td class="c ans">B</td><td>遽：副詞，急忙，指偷鐘者急忙摀住自己的耳朵。</td></tr>
 <tr><td class="c">2</td><td class="c ans">B</td><td>己：代詞，指偷鐘者自己，怕別人聽到鐘聲來搶。</td></tr>
 <tr><td class="c">3</td><td class="c ans">B</td><td>之：代詞，指鐘；偷鐘者用椎子把鐘敲毀。</td></tr>
@@ -352,16 +453,7 @@
 <tr><td class="c">14</td><td class="c ans">B</td><td>乃：於是，伯樂聽了請求，於是繞著馬看（第35課注釋⑩）。</td></tr>
 <tr><td class="c">15</td><td class="c ans">B</td><td>子：第二人稱代詞，你，指伯樂（汝＝爾＝子＝若＝君＝卿）。</td></tr>
 </tbody></table></div>
-<h3>貳、成語、修辭與文學常識</h3>
-<div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
-<tr><td class="c">1</td><td class="c ans">B</td><td>偷鐘者摀住自己的耳朵，就以為別人也聽不到，比喻自欺欺人。</td></tr>
-<tr><td class="c">2</td><td class="c ans">B</td><td>野人獻曝：亦用為人對所獻東西或意見的自謙之詞。</td></tr>
-<tr><td class="c">3</td><td class="c ans">A</td><td>管寧因與華歆志趣不合，割席分坐，後比喻朋友絕交。</td></tr>
-<tr><td class="c">4</td><td class="c ans">A</td><td>把日夜鳴叫卻無人理會的三種動物，與適時啼叫的晨雞對比，屬於映襯（對比）。</td></tr>
-<tr><td class="c">5</td><td class="c ans">A</td><td>伯樂一顧：比喻才能受人賞識、肯定。</td></tr>
-</tbody></table></div>
-<h3>參、課文選擇題（題號：課次－題號）</h3>
-<div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
+<h3>貳、課文選擇題（題號：課次－題號）</h3><div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
 <tr><td class="c">31－1</td><td class="c ans">A</td><td>文中「鐘大不可負」，鐘太大所以背不走。</td></tr>
 <tr><td class="c">31－2</td><td class="c ans">B</td><td>鐘太大無法背走，所以想敲碎後再帶走。</td></tr>
 <tr><td class="c">31－3</td><td class="c ans">C</td><td>「恐人聞之而奪己也」，他害怕別人聽到鐘聲，就會來搶鐘。</td></tr>
@@ -383,7 +475,23 @@
 <tr><td class="c">35－3</td><td class="c ans">B</td><td>馬本身沒有改變，是伯樂的名氣讓大家改觀。</td></tr>
 <tr><td class="c">35－4</td><td class="c ans">A</td><td>否定句中，代詞賓語「之」提到動詞前，語序還原為「人莫知之」。</td></tr>
 </tbody></table></div>
+<h3>參、成語練習</h3><div class="tablewrap"><table class="key"><thead><tr><th>題號</th><th>答案</th><th>解析</th></tr></thead><tbody>
+<tr><td class="c">1</td><td class="c ans">B</td><td>偷鐘者摀住自己的耳朵，就以為別人也聽不到，比喻自欺欺人。</td></tr>
+<tr><td class="c">2</td><td class="c ans">B</td><td>野人獻曝：亦用為人對所獻東西或意見的自謙之詞。</td></tr>
+<tr><td class="c">3</td><td class="c ans">A</td><td>管寧因與華歆志趣不合，割席分坐，後比喻朋友絕交。</td></tr>
+<tr><td class="c">4</td><td class="c ans">A</td><td>把日夜鳴叫卻無人理會的三種動物，與適時啼叫的晨雞對比，屬於映襯（對比）。</td></tr>
+<tr><td class="c">5</td><td class="c ans">A</td><td>伯樂一顧：比喻才能受人賞識、肯定。</td></tr>
+</tbody></table></div>
 </details>
+</section>
+<section id="downloads">
+<h2>下載 Word 檔</h2>
+<div class="dl-list">
+<a class="dl-card" href="古文今讀31-35.docx" download>
+<span class="dl-icon">📄</span>
+<span class="dl-text"><span class="dl-title">Word 檔</span><span class="dl-sub">虛字整理、課文、選擇題、成語（可列印）</span></span>
+</a>
+</div>
 </section>
 <footer>古文今讀 31–35 課　虛字整理與選擇題</footer>
 </main>
@@ -391,8 +499,9 @@
 
 (function () {
   var qs = Array.prototype.slice.call(document.querySelectorAll('li.q'));
-  var mode = 'practice', submitted = false;
+  var mode = 'practice', submitted = false, sent = false;
   var $ = function (id) { return document.getElementById(id); };
+  var ENDPOINT = '';
 
   function reveal(q) {
     var chosen = q.getAttribute('data-chosen'), ans = q.getAttribute('data-a');
@@ -434,10 +543,11 @@
       if (d.c > 0 || allRevealed || (mode === 'practice' && d.a > 0)) txt += '，答對 ' + d.c + ' 題，得分 ' + d.score + '／' + d.pts;
       el.textContent = txt;
     });
+    return secs;
   }
 
   function reset() {
-    submitted = false;
+    submitted = false; sent = false; $('send-msg').textContent = '';
     qs.forEach(function (q) {
       q.removeAttribute('data-chosen'); q.classList.remove('done');
       q.querySelector('.exp').hidden = true;
@@ -458,14 +568,40 @@
     $('m-test').classList.toggle('on', m === 'test');
     $('m-practice').setAttribute('aria-pressed', m === 'practice');
     $('m-test').setAttribute('aria-pressed', m === 'test');
-    $('submit').hidden = m !== 'test';
     reset();
+  }
+
+  function who() { return { cls: $('f-cls').value.trim(), seat: $('f-seat').value.trim(), name: $('f-name').value.trim() }; }
+  function whoOk(warn) {
+    var w = who();
+    if (w.cls && w.seat && w.name) return true;
+    if (warn) { window.alert('請先填寫班級、座號、姓名'); (!w.cls ? $('f-cls') : !w.seat ? $('f-seat') : $('f-name')).focus(); }
+    return false;
+  }
+  function send() {
+    var w = who(), msg = $('send-msg');
+    var secs = {}, total = 0, maxTotal = 0, ans = '';
+    qs.forEach(function (q) {
+      var s = q.getAttribute('data-sec'), pts = +q.getAttribute('data-pts');
+      var ch = q.getAttribute('data-chosen'); ans += ch || '-';
+      secs[s] = secs[s] || 0; maxTotal += pts;
+      if (ch === q.getAttribute('data-a')) { secs[s] += pts; total += pts; }
+    });
+    if (!ENDPOINT) { msg.textContent = '（老師尚未設定成績後台，成績沒有送出。本次得分 ' + total + '／' + maxTotal + '）'; return; }
+    msg.textContent = '送出中…';
+    var payload = { cls: w.cls, seat: w.seat, name: w.name, mode: mode === 'test' ? '交卷' : '即時', total: total, answers: ans };
+    Object.keys(secs).forEach(function (k) { payload[k] = secs[k]; });
+    fetch(ENDPOINT, { method: 'POST', body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { sent = !!(j && j.ok); msg.textContent = sent ? '✓ 成績已送出給老師（' + total + '／' + maxTotal + '）' : '送出失敗，請再按一次「交卷送出」'; })
+      .catch(function () { msg.textContent = '送出失敗，請檢查網路後再按一次「交卷送出」'; });
   }
 
   qs.forEach(function (q) {
     Array.prototype.forEach.call(q.querySelectorAll('button.opt'), function (b) {
       b.addEventListener('click', function () {
         if (q.classList.contains('done')) return;
+        if (!whoOk(true)) return;
         q.setAttribute('data-chosen', b.getAttribute('data-k'));
         if (mode === 'practice') { reveal(q); }
         else {
@@ -483,11 +619,14 @@
     if (!any || window.confirm('要清除目前的作答，重新開始嗎？')) reset();
   });
   $('submit').addEventListener('click', function () {
+    if (sent) { $('send-msg').textContent = '成績已經送出了'; return; }
+    if (!whoOk(true)) return;
     var left = qs.filter(function (q) { return !q.getAttribute('data-chosen'); }).length;
     if (left > 0 && !window.confirm('還有 ' + left + ' 題沒作答，確定要交卷嗎？')) return;
     submitted = true;
     qs.forEach(function (q) { if (!q.classList.contains('done')) reveal(q); });
     stats();
+    send();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   stats();
